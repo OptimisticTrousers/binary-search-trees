@@ -52,4 +52,9 @@ describe("#mergeSort", () => {
     mergeSort(array);
     expect(array).toEqual(10);
   });
+  test("pass two dimensional array", () => {
+    const array = [[10, 2], [2], 12];
+    mergeSort(array);
+    expect(array).toEqual([[10, 2], [2], 12]);
+  });
 });

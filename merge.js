@@ -1,19 +1,18 @@
 function mergeSort(array) {
   if (!Array.isArray(array)) return;
 
-  const arrayCopy = [...array];
   const n = array.length;
 
   if (n < 2) {
     return array;
   }
 
-  const firstHalf = arrayCopy.slice(0, n / 2);
-  const secondHalf = arrayCopy.slice(n / 2);
+  const firstHalf = array.slice(0, n / 2);
+  const secondHalf = array.slice(n / 2);
 
   mergeSort(firstHalf);
   mergeSort(secondHalf);
-  merge(arrayCopy, firstHalf, secondHalf);
+  merge(array, firstHalf, secondHalf);
 }
 
 function merge(array, firstHalf, secondHalf) {
