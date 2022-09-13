@@ -11,3 +11,5 @@ class Tree {
     this.root = newNode;
   };
 }
+
+module.exports = Tree;
