@@ -104,6 +104,30 @@ class Tree {
     }
     return null;
   };
+
+  levelOrderRec = (callback) => {
+    if (this.root === null) return [];
+
+    const array = [];
+
+    array.push(this.root);
+
+    const answer = [...array];
+
+    while (array.length !== 0) {
+      const current = array[0];
+      console.log(current.data);
+      if (current.left !== null) {
+        array.push(current.left);
+      }
+      if (current.right !== null) {
+        array.push(current.right);
+      }
+
+      answer.push(array.shift());
+    }
+    return answer;
+  };
 }
 
 const tree = new Tree([30, 15, 20, 10, 40, 60]);
