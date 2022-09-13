@@ -27,4 +27,29 @@ describe("#mergeSort", () => {
     mergeSort(array);
     expect(array).toEqual([8, 15]);
   });
+  test("pass null", () => {
+    const array = null;
+    mergeSort(array);
+    expect(array).toEqual(null);
+  });
+  test("pass undefined", () => {
+    const array = undefined;
+    mergeSort(array);
+    expect(array).toEqual(undefined);
+  });
+  test("pass object", () => {
+    const array = {};
+    mergeSort(array);
+    expect(array).toEqual({});
+  });
+  test("pass NaN", () => {
+    const array = NaN;
+    mergeSort(array);
+    expect(array).toEqual(NaN);
+  });
+  test("pass number", () => {
+    const array = 10;
+    mergeSort(array);
+    expect(array).toEqual(10);
+  });
 });

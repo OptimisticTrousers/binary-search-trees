@@ -1,4 +1,5 @@
 function mergeSort(array) {
+  if (!Array.isArray(array)) return;
   const n = array.length;
 
   if (n < 2) {
