@@ -36,10 +36,10 @@ class Tree {
       root = new Node(value);
       return root;
     }
-    if (value < root.value) {
+    if (value < root.data) {
       root.left = this.insertRec(root.left, value);
-    } else if (value > root.value) {
-      root.right = this.insertRec(root.right, key);
+    } else if (value > root.data) {
+      root.right = this.insertRec(root.right, value);
     }
 
     return root;
