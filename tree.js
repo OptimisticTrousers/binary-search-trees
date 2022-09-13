@@ -116,7 +116,7 @@ class Tree {
 
     while (array.length !== 0) {
       const current = array[0];
-      answer.push(current.data);
+      answer.push(current);
       if (current.left !== null) {
         array.push(current.left);
       }
@@ -126,7 +126,10 @@ class Tree {
 
       array.shift();
     }
-    return answer;
+    if (typeof callback === "function") {
+      return Array.from(answer, callback);
+    }
+    return answer.map((node) => node.data);
   };
 }
 
