@@ -10,7 +10,7 @@ describe("#mergeSort", () => {
   test("odd array", () => {
     const array = [4, 1, 2, 51, 6];
     mergeSort(array);
-    expect(array).toEqual(1, 2, 4, 6, 51);
+    expect(array).toEqual([1, 2, 4, 6, 51]);
   });
   test("empty array", () => {
     const array = [];
