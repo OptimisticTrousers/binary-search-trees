@@ -86,8 +86,27 @@ describe("Tree", () => {
       expect(tree.root.left.left.data).toEqual(20);
       expect(tree.root.left.right.data).toEqual(40);
     });
-    test("inserts a number into a node that has a child", () => {
+    test("inserts a number into a node that has a child", () => {});
+  });
+  describe("#find", () => {
+    test("finds an arbitrary number in the tree", () => {
       const tree = new Tree([30, 50, 15, 20, 10, 40, 60]);
+
+      expect(tree.find(50)).toEqual({
+        data: 50,
+        left: { data: 40, left: null, right: null },
+        right: { data: 60, left: null, right: null },
+      });
+    });
+    test("returns null if a number in a tree is not found", () => {
+      const tree = new Tree([30, 50, 15, 20, 10, 40, 60]);
+
+      expect(tree.find(150)).toEqual(null);
+    });
+    test("returns correct number if the tree is size one", () => {
+      const tree = new Tree([16]);
+
+      expect(tree.find(16)).toEqual({ data: 16, left: null, right: null });
     });
   });
 });
