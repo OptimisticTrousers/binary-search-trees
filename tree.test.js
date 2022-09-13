@@ -125,6 +125,23 @@ describe("Tree", () => {
         const tree = new Tree();
         expect(tree.levelOrderLoop()).toEqual([]);
       });
+      test("providing a callback for regular tree", () => {
+        const tree = new Tree([50, 30, 70, 20, 40, 60, 80]);
+
+        expect(tree.levelOrderLoop((node) => node.data * 2)).toEqual([
+          100, 60, 140, 40, 80, 120, 160,
+        ]);
+      });
+      test("providing a callback for a single element tree", () => {
+        const tree = new Tree([18]);
+
+        expect(tree.levelOrderLoop((node) => node.data.toString())).toEqual(["18"]);
+      });
+      test("providing a callback for an empty tree", () => {
+        const tree = new Tree();
+
+        expect(tree.levelOrderLoop((node) => Math.pow(node, 2)));
+      });
     });
     describe("#levelOrderRec", () => {});
   });
