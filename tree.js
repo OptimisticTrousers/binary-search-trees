@@ -30,9 +30,29 @@ class Tree {
     node.right = this.buildTree(array, mid + 1, end);
     return node;
   };
+
+  insertRec = (root, value) => {
+    if (root === null) {
+      root = new Node(value);
+      return root;
+    }
+    if (value < root.value) {
+      root.left = this.insertRec(root.left, value);
+    } else if (value > root.value) {
+      root.right = this.insertRec(root.right, key);
+    }
+
+    return root;
+  };
+
+  insert = (value) => {
+    this.root = this.insertRec(this.root, value);
+  };
+
+  delete = (value) => {};
 }
 
-const array = [1, 2, 3, 4, 5, 6, 7];
+const array = [2, 1, 15, 16, 58, 6, 7];
 
 const tree = new Tree(array);
 
