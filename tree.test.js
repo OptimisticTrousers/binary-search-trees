@@ -15,6 +15,31 @@ describe("Tree", () => {
       expect(tree.root.left.right.data).toEqual(40);
     });
   });
+  describe("#delete", () => {
+    test("deletes a node with no children", () => {
+      const tree = new Tree([50, 30, 20, 40, 70, 60, 80]);
+      tree.delete(80);
+
+      expect(tree.root.right.right).toEqual(null);
+    });
+    test("deletes a node with one child", () => {
+      const tree = new Tree([50, 30, 20, 40, 70, 60]);
+
+      tree.delete(70);
+
+      expect(tree.root.right.data).toEqual(60);
+    });
+    test("deletes a node with two children", () => {
+      const tree = new Tree([40, 30, 50, 70, 80]);
+
+      tree.delete(50);
+
+      expect(tree.root.data).toEqual(70);
+      expect(tree.root.left.data).toEqual(30);
+      expect(tree.root.right.data).toEqual(80);
+      expect(tree.root.left.right.data).toEqual(40);
+    });
+  });
   describe("#insert", () => {
     test("inserts into an existing tree", () => {
       const tree = new Tree([30, 15, 20, 10, 40, 60]);
