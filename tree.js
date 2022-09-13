@@ -1,10 +1,12 @@
 const Node = require("./node");
+const mergeSort = require("./merge");
 class Tree {
   constructor(array) {
     this.array = [...array];
     this.root = null;
   }
   buildTree = (array) => {
+    mergeSort(array);
     const n = array.length - 1;
     const mid = n / 2;
     this.root = new Node(array[mid]);
@@ -13,6 +15,5 @@ class Tree {
     return this.root;
   };
 }
-
 
 module.exports = Tree;
