@@ -1,7 +1,7 @@
 const Node = require("./node");
 const { mergeSort, removeDuplicates } = require("./helpers");
 class Tree {
-  constructor(array) {
+  constructor(array = []) {
     this.array = [...array];
     this.root = this.buildTree(this.array, 0, array.length - 1);
   }
@@ -24,7 +24,7 @@ class Tree {
     if (start > end) return null;
     mergeSort(array);
     removeDuplicates(array);
-    const mid = (start + end) / 2;
+    const mid = Math.floor((start + end) / 2);
     const node = new Node(array[mid]);
     node.left = this.buildTree(array, start, mid - 1);
     node.right = this.buildTree(array, mid + 1, end);
@@ -49,12 +49,16 @@ class Tree {
     this.root = this.insertRec(this.root, value);
   };
 
-  delete = (value) => {};
+  delete = (value) => {
+    this.root = this.deleteRec(this.root, value);
+  };
 }
 
-const array = [2, 1, 15, 16, 58, 6, 7];
+const tree = new Tree([30, 15, 20, 10, 40, 60]);
 
-const tree = new Tree(array);
+tree.prettyPrint(tree.root);
+
+tree.insert(50);
 
 tree.prettyPrint(tree.root);
 
