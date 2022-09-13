@@ -6,6 +6,16 @@ class Tree {
     this.root = null;
   }
 
+  prettyPrint = (node, prefix = "", isLeft = true) => {
+    if (node.right !== null) {
+      this.prettyPrint(node.right, `${prefix}${isLeft ? "|  " : "  "}`, false);
+    }
+    console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
+    if (node.left !== null) {
+      prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
+    }
+  };
+
   buildTree = (array) => {
     mergeSort(array);
     removeDuplicates(array);
