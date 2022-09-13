@@ -85,6 +85,25 @@ class Tree {
   delete = (value) => {
     this.root = this.deleteRec(this.root, value);
   };
+
+  find = (value) => {
+    let temp = this.root;
+
+    while (temp) {
+      if (temp.data < value) {
+        temp = temp.right;
+      } else if (temp.data > value) {
+        temp = temp.left;
+      } else {
+        break;
+      }
+    }
+
+    if (temp) {
+      return temp;
+    }
+    return null;
+  };
 }
 
 const tree = new Tree([30, 15, 20, 10, 40, 60]);
