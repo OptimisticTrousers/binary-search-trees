@@ -105,18 +105,18 @@ class Tree {
     return null;
   };
 
-  levelOrderRec = (callback) => {
+  levelOrderLoop = (callback) => {
     if (this.root === null) return [];
 
     const array = [];
 
     array.push(this.root);
 
-    const answer = [...array];
+    let answer = [];
 
     while (array.length !== 0) {
       const current = array[0];
-      console.log(current.data);
+      answer.push(current.data);
       if (current.left !== null) {
         array.push(current.left);
       }
@@ -124,7 +124,7 @@ class Tree {
         array.push(current.right);
       }
 
-      answer.push(array.shift());
+      array.shift();
     }
     return answer;
   };
