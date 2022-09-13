@@ -49,6 +49,39 @@ class Tree {
     this.root = this.insertRec(this.root, value);
   };
 
+  minValue = (root) => {
+    let minv = root.data;
+    while (root.left !== null) {
+      minv = root.left.data;
+      root = root.left;
+    }
+    return minv;
+  };
+
+  deleteRec = (root, value) => {
+    if (root === null) {
+      return root;
+    }
+
+    if (value < root.data) {
+      root.left = this.deleteRec(root.left, value);
+    } else if (value > root.data) {
+      root.right = this.deleteRec(root.right, value);
+    } else {
+      if (root.left === null) {
+        return root.right;
+      } else if (root.right === null) {
+        return root.left;
+      }
+
+      root.data = minValue(root.right);
+
+      root.right = deleteRec(root.right, root.data);
+    }
+
+    return root;
+  };
+
   delete = (value) => {
     this.root = this.deleteRec(this.root, value);
   };
