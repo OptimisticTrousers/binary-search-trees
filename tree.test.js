@@ -109,4 +109,23 @@ describe("Tree", () => {
       expect(tree.find(16)).toEqual({ data: 16, left: null, right: null });
     });
   });
+  describe("#levelOrder", () => {
+    describe("#levelOrderLoop", () => {
+      test("traversing a regular tree without callback", () => {
+        const tree = new Tree([50, 30, 20, 40, 70, 60, 80]);
+
+        expect(tree.levelOrderLoop()).toEqual([50, 30, 70, 20, 40, 60, 80]);
+      });
+      test("traversing a single element tree without callback", () => {
+        const tree = new Tree([50]);
+
+        expect(tree.levelOrderLoop()).toEqual([50]);
+      });
+      test("returning an empty array for an empty tree without callback", () => {
+        const tree = new Tree();
+        expect(tree.levelOrderLoop()).toEqual([]);
+      });
+    });
+    describe("#levelOrderRec", () => {});
+  });
 });
