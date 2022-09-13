@@ -42,4 +42,8 @@ function merge(array, firstHalf, secondHalf) {
   }
 }
 
+const array = [4, 1, 2, 51, 6]
+mergeSort(array);
+console.log()
+
 module.exports = mergeSort;
