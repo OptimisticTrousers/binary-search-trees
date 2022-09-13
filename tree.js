@@ -1,12 +1,14 @@
 const Node = require("./node");
-const mergeSort = require("./merge");
+const mergeSort = require("./helpers");
 class Tree {
   constructor(array) {
     this.array = [...array];
     this.root = null;
   }
+
   buildTree = (array) => {
     mergeSort(array);
+    removeDuplicates(array);
     const n = array.length - 1;
     const mid = n / 2;
     this.root = new Node(array[mid]);

@@ -1,4 +1,4 @@
-const mergeSort = require("./merge");
+const { mergeSort, removeDuplicates } = require("./helpers");
 
 describe("#mergeSort", () => {
   test("even array", () => {
@@ -56,5 +56,16 @@ describe("#mergeSort", () => {
     const array = [[10, 2], [2], 12];
     mergeSort(array);
     expect(array).toEqual([[10, 2], [2], 12]);
+  });
+});
+
+describe("#removeDuplicates", () => {
+  test("removes duplicates in array", () => {
+    const array = [4, 2, 7, 1, 7, 7];
+    expect(removeDuplicates(array)).toEqual([4, 2, 7, 1]);
+  });
+  test("does nothing in empty array", () => {
+    const array = [];
+    expect(removeDuplicates(array)).toEqual([]);
   });
 });
