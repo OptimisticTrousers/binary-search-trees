@@ -3,7 +3,7 @@ const { mergeSort, removeDuplicates } = require("./helpers");
 class Tree {
   constructor(array) {
     this.array = [...array];
-    this.root = buildTree(this.array);
+    this.root = this.buildTree(this.array, 0, array.length - 1);
   }
 
   prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -16,15 +16,15 @@ class Tree {
     }
   };
 
-  buildTree = (array) => {
+  buildTree = (array, start, end) => {
+    if (start > end) return null;
     mergeSort(array);
     removeDuplicates(array);
-    const n = array.length - 1;
-    const mid = n / 2;
-    const root = new Node(array[mid]);
-    root.left = this.buildTree(array.slice(0, mid - 1));
-    root.right = this.buildTree(array.slice(mid + 1, n));
-    return root;
+    const mid = (start + end) / 2;
+    const node = new Node(array[mid]);
+    node.left = this.buildTree(array, start, mid - 1);
+    node.right = this.buildTree(array, mid + 1, end);
+    return node;
   };
 }
 
@@ -32,6 +32,6 @@ const array = [1, 2, 3, 4, 5, 6, 7];
 
 const tree = new Tree(array);
 
-tree.prettyPrint(rootNode);
+tree.prettyPrint(tree.root);
 
 module.exports = Tree;
