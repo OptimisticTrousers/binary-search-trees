@@ -74,9 +74,9 @@ class Tree {
         return root.left;
       }
 
-      root.data = minValue(root.right);
+      root.data = this.minValue(root.right);
 
-      root.right = deleteRec(root.right, root.data);
+      root.right = this.deleteRec(root.right, root.data);
     }
 
     return root;
