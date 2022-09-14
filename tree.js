@@ -131,6 +131,19 @@ class Tree {
     }
     return answer.map((node) => node.data);
   };
+
+  levelOrderRec = (callback) => {
+    if (this.root === null) return [];
+
+    if(current.left !== null) {
+      return this.levelOrderRec(callback)
+    }
+    if(current.right !== null) {
+
+      this.levelOrderRec(current.right)
+    }
+    this.levelOrderRec()
+  };
 }
 
 const tree = new Tree([30, 15, 20, 10, 40, 60]);
