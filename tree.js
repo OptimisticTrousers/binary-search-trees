@@ -143,24 +143,48 @@ class Tree {
     }
     this.levelOrderRec();
   };
-  preorder = (node, callback) => {
-    if (node === null) return;
+  preorder = (callback) => {
+    const array = [];
+    recursion = (node) => {
+      if (node === null) return;
 
-    console.log(node.data);
-    this.preorder(node.left);
-    this.preorder(node.right);
+      array.push(node.data);
+      recursion(node.left);
+      recursion(node.right);
+    };
+    recursion(this.root);
+    if (typeof callback === "function") {
+      return Array.from(array, callback);
+    }
+    return array;
   };
-  inorder = (node, callback) => {
-    if (node === null) return;
-    this.inorder(node.left);
-    console.log(node.data);
-    this.inorder(node.right);
+  inorder = (callback) => {
+    const array = [];
+    recursion = (node) => {
+      if (node === null) return;
+      recursion(node.left);
+      array.push(node);
+      recursion(node.right);
+    };
+    recursion(this.root);
+    if (typeof callback === "function") {
+      return Array.from(array, callback);
+    }
+    return array.map((node) => node.data);
   };
-  postorder = (node, callback) => {
-    if (node === null) return;
-    this.postorder(node.left);
-    this.postorder(node.right);
-    console.log(node.data);
+  postorder = (callback) => {
+    const array = [];
+    recursion = (node) => {
+      if (node === null) return;
+      recursion(node.left);
+      recursion(node.right);
+      array.push(node.data);
+    };
+    recursion(this.root);
+    if (typeof callback === "function") {
+      return Array.from(array, callback);
+    }
+    return array;
   };
 }
 

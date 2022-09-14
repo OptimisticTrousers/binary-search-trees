@@ -148,14 +148,14 @@ describe("Tree", () => {
     describe("#levelOrderRec", () => {});
     describe("#preorder", () => {
       test("does not provide a callback", () => {
-        const tree = new Tree([30, 15, 20, 10, 40, 60]);
+        const tree = new Tree([20, 30, 15, 40, 10, 60]);
 
-        expect(tree.preorder()).toEqual([20, 10, 15, 40, 30, 60, 50]);
+        expect(tree.preorder()).toEqual([15, 20, 30, 10, 40, 60]);
       });
       test("provides a callback", () => {
         const tree = new Tree([30, 15, 20, 10, 40, 60]);
         expect(tree.preorder((node) => node.data * 2)).toEqual([
-          40, 20, 30, 80, 60, 120, 100,
+          40, 60, 30, 30, 80, 20, 120,
         ]);
       });
       test("does not provide a callback for a single element tree", () => {
@@ -192,12 +192,12 @@ describe("Tree", () => {
       test("does not provide a callback", () => {
         const tree = new Tree([30, 15, 20, 10, 40, 60]);
 
-        expect(tree.preorder()).toEqual([10, 15, 30, 40, 50, 60]);
+        expect(tree.preorder()).toEqual([15, 30, 20, 10, 40, 60]);
       });
       test("provides a callback", () => {
         const tree = new Tree([30, 15, 20, 10, 40, 60]);
         expect(tree.preorder((node) => node.data * 2)).toEqual([
-          20, 30, 60, 80, 100, 120,
+          30, 60, 20, 80, 120, 40,
         ]);
       });
       test("does not provide a callback for a single element tree", () => {
