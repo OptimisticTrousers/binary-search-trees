@@ -143,7 +143,6 @@ class Tree {
     }
     this.levelOrderRec();
   };
-
   preorder = (node, callback) => {
     if (node === null) return;
 
@@ -157,6 +156,12 @@ class Tree {
     console.log(node.data);
     this.inorder(node.right);
   };
+  postorder = (node, callback) => {
+    if (node === null) return;
+    this.postorder(node.left);
+    this.postorder(node.right);
+    console.log(node.data);
+  };
 }
 
 const tree = new Tree([30, 15, 20, 10, 40, 60]);
@@ -167,6 +172,6 @@ tree.insert(50);
 
 tree.prettyPrint(tree.root);
 
-tree.preorder(tree.root)
+tree.preorder(tree.root);
 
 module.exports = Tree;
