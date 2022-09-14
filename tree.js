@@ -135,14 +135,21 @@ class Tree {
   levelOrderRec = (callback) => {
     if (this.root === null) return [];
 
-    if(current.left !== null) {
-      return this.levelOrderRec(callback)
+    if (current.left !== null) {
+      return this.levelOrderRec(callback);
     }
-    if(current.right !== null) {
+    if (current.right !== null) {
+      this.levelOrderRec(current.right);
+    }
+    this.levelOrderRec();
+  };
 
-      this.levelOrderRec(current.right)
-    }
-    this.levelOrderRec()
+  preorder = (node, callback) => {
+    if (node === null) return;
+
+    console.log(node.data);
+    this.preorder(node.left);
+    this.preorder(node.right);
   };
 }
 
@@ -153,5 +160,7 @@ tree.prettyPrint(tree.root);
 tree.insert(50);
 
 tree.prettyPrint(tree.root);
+
+tree.preorder(tree.root)
 
 module.exports = Tree;
