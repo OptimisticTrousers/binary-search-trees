@@ -145,7 +145,7 @@ class Tree {
   };
   preorder = (callback) => {
     const array = [];
-    recursion = (node) => {
+    const recursion = (node) => {
       if (node === null) return;
 
       array.push(node.data);
@@ -160,7 +160,7 @@ class Tree {
   };
   inorder = (callback) => {
     const array = [];
-    recursion = (node) => {
+    const recursion = (node) => {
       if (node === null) return;
       recursion(node.left);
       array.push(node);
@@ -195,7 +195,5 @@ tree.prettyPrint(tree.root);
 tree.insert(50);
 
 tree.prettyPrint(tree.root);
-
-tree.preorder(tree.root);
 
 module.exports = Tree;
