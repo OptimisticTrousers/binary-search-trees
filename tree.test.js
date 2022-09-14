@@ -135,7 +135,9 @@ describe("Tree", () => {
       test("providing a callback for a single element tree", () => {
         const tree = new Tree([18]);
 
-        expect(tree.levelOrderLoop((node) => node.data.toString())).toEqual(["18"]);
+        expect(tree.levelOrderLoop((node) => node.data.toString())).toEqual([
+          "18",
+        ]);
       });
       test("providing a callback for an empty tree", () => {
         const tree = new Tree();
@@ -148,12 +150,14 @@ describe("Tree", () => {
       test("does not provide a callback", () => {
         const tree = new Tree([20, 30, 15, 40, 10, 60]);
 
-        expect(tree.preorder().map((node) => node.data)).toEqual([15, 20, 30, 10, 40, 60]);
+        expect(tree.preorder().map((node) => node.data)).toEqual([
+          20, 10, 15, 40, 30, 60,
+        ]);
       });
       test("provides a callback", () => {
         const tree = new Tree([30, 15, 20, 10, 40, 60]);
         expect(tree.preorder((node) => node.data * 2)).toEqual([
-          40, 60, 30, 30, 80, 20, 120,
+          40, 20, 30, 80, 60, 120,
         ]);
       });
       test("does not provide a callback for a single element tree", () => {
@@ -169,46 +173,47 @@ describe("Tree", () => {
       test("does not provide a callback", () => {
         const tree = new Tree([30, 15, 20, 10, 40, 60]);
 
-        expect(tree.preorder().map((node) => node.data)).toEqual([
-          15, 10, 30, 50, 60, 40,
+        expect(tree.postorder().map((node) => node.data)).toEqual([
+          15, 10, 30, 60, 40, 20,
         ]);
       });
       test("provides a callback", () => {
         const tree = new Tree([30, 15, 20, 10, 40, 60]);
-        expect(tree.preorder((node) => node.data * 2)).toEqual([
-          30, 20, 60, 100, 120, 80,
+
+        expect(tree.postorder().map((node) => node.data * 2)).toEqual([
+          30, 20, 60, 120, 80, 40,
         ]);
       });
       test("does not provide a callback for a single element tree", () => {
         const tree = new Tree([48]);
-        expect(tree.preorder()[0]).toEqual(new Node(48));
+        expect(tree.postorder()[0]).toEqual(new Node(48));
       });
       test("provides a callback for a single element tree", () => {
         const tree = new Tree([48]);
-        expect(tree.preorder((node) => node.data.toString())).toEqual(["48"]);
+        expect(tree.postorder((node) => node.data.toString())).toEqual(["48"]);
       });
     });
     describe("#inorder", () => {
       test("does not provide a callback", () => {
         const tree = new Tree([30, 15, 20, 10, 40, 60]);
 
-        expect(tree.preorder().map((node) => node.data)).toEqual([
+        expect(tree.inorder().map((node) => node.data)).toEqual([
           10, 15, 20, 30, 40, 60,
         ]);
       });
       test("provides a callback", () => {
         const tree = new Tree([30, 15, 20, 10, 40, 60]);
-        expect(tree.preorder((node) => node.data * 2)).toEqual([
+        expect(tree.inorder((node) => node.data * 2)).toEqual([
           20, 30, 40, 60, 80, 120,
         ]);
       });
       test("does not provide a callback for a single element tree", () => {
         const tree = new Tree([48]);
-        expect(tree.preorder()[0]).toEqual(new Node(48));
+        expect(tree.inorder()[0]).toEqual(new Node(48));
       });
       test("provides a callback for a single element tree", () => {
         const tree = new Tree([48]);
-        expect(tree.preorder((node) => node.data.toString())).toEqual(["48"]);
+        expect(tree.inorder((node) => node.data.toString())).toEqual(["48"]);
       });
     });
   });
