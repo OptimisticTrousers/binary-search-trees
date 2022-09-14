@@ -151,6 +151,12 @@ class Tree {
     this.preorder(node.left);
     this.preorder(node.right);
   };
+  inorder = (node, callback) => {
+    if (node === null) return;
+    this.inorder(node.left);
+    console.log(node.data);
+    this.inorder(node.right);
+  };
 }
 
 const tree = new Tree([30, 15, 20, 10, 40, 60]);
