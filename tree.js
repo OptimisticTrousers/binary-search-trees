@@ -148,7 +148,7 @@ class Tree {
     const recursion = (node) => {
       if (node === null) return;
 
-      array.push(node.data);
+      array.push(node);
       recursion(node.left);
       recursion(node.right);
     };
@@ -178,7 +178,7 @@ class Tree {
       if (node === null) return;
       recursion(node.left);
       recursion(node.right);
-      array.push(node.data);
+      array.push(node);
     };
     recursion(this.root);
     if (typeof callback === "function") {
@@ -190,10 +190,6 @@ class Tree {
 
 const tree = new Tree([30, 15, 20, 10, 40, 60]);
 
-tree.prettyPrint(tree.root);
-
-tree.insert(50);
-
-tree.prettyPrint(tree.root);
+console.log(tree.inorder((node) => node.data * 2));
 
 module.exports = Tree;
