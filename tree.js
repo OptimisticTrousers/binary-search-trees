@@ -170,11 +170,11 @@ class Tree {
     if (typeof callback === "function") {
       return Array.from(array, callback);
     }
-    return array.map((node) => node.data);
+    return array;
   };
   postorder = (callback) => {
     const array = [];
-    recursion = (node) => {
+    const recursion = (node) => {
       if (node === null) return;
       recursion(node.left);
       recursion(node.right);
@@ -189,7 +189,9 @@ class Tree {
 }
 
 const tree = new Tree([30, 15, 20, 10, 40, 60]);
+console.log(tree.postorder((node) => node.data * 2))
 
-console.log(tree.inorder((node) => node.data * 2));
+// console.log(tree.inorder((node) => node.data * 2));
+tree.prettyPrint(tree.root);
 
 module.exports = Tree;
