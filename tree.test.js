@@ -167,5 +167,26 @@ describe("Tree", () => {
         expect(tree.preorder((node) => node.data.toString())).toEqual(["48"]);
       });
     });
+    describe("#postorder ", () => {
+      test("does not provide a callback", () => {
+        const tree = new Tree([30, 15, 20, 10, 40, 60]);
+
+        expect(tree.preorder()).toEqual([15, 10, 30, 50, 60, 40]);
+      });
+      test("provides a callback", () => {
+        const tree = new Tree([30, 15, 20, 10, 40, 60]);
+        expect(tree.preorder((node) => node.data * 2)).toEqual([
+          30, 20, 60, 100, 120, 80,
+        ]);
+      });
+      test("does not provide a callback for a single element tree", () => {
+        const tree = new Tree([48]);
+        expect(tree.preorder()).toEqual([48]);
+      });
+      test("provides a callback for a single element tree", () => {
+        const tree = new Tree([48]);
+        expect(tree.preorder((node) => node.data.toString())).toEqual(["48"]);
+      });
+    });
   });
 });
