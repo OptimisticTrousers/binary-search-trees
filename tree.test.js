@@ -265,4 +265,47 @@ describe("Tree", () => {
       expect(tree.depth(tree.root)).toEqual(0);
     });
   });
+  describe("#isBalanced", () => {
+    test("balanced for a single node tree", () => {
+      const tree = new Tree([16]);
+
+      expect(tree.isBalanced()).toEqual(true);
+    });
+    test("unbalanced tree", () => {
+      const tree = new Tree([16]);
+
+      tree.insert(10);
+      tree.insert(20);
+      tree.insert(30);
+      tree.insert(40);
+      tree.insert(50);
+      tree.insert(60);
+
+      expect(tree.isBalanced()).toEqual(false);
+    });
+    test("unbalanced tree at height difference of 2", () => {
+      const tree = new Tree([16]);
+
+      tree.insert(10);
+      tree.insert(20);
+      tree.insert(30);
+      tree.insert(40);
+      expect(tree.isBalanced()).toEqual(false);
+    });
+    test("balanced for a tree with a height difference of 1", () => {
+      const tree = new Tree([16]);
+
+      tree.insert(10);
+      tree.insert(20);
+      tree.insert(30);
+      expect(tree.isBalanced()).toEqual(true);
+    });
+    test("balanced for a tree with a height difference of 0", () => {
+      const tree = new Tree([16]);
+
+      tree.insert(10);
+      tree.insert(20);
+      expect(tree.isBalanced()).toEqual(true);
+    });
+  });
 });
