@@ -186,10 +186,29 @@ class Tree {
     }
     return array;
   };
+
+  height = (node) => {
+    let leftTemp = node;
+    let rightTemp = node;
+    let leftCount = 0;
+    let rightCount = 0;
+
+    while (leftTemp.left) {
+      leftTemp = leftTemp.left;
+      leftCount++;
+    }
+
+    while (rightTemp.right) {
+      rightTemp = rightTemp.right;
+      rightCount++;
+    }
+
+    return leftCount > rightCount ? leftCount : rightCount;
+  };
 }
 
 const tree = new Tree([30, 15, 20, 10, 40, 60]);
-console.log(tree.postorder((node) => node.data * 2))
+console.log(tree.postorder((node) => node.data * 2));
 
 // console.log(tree.inorder((node) => node.data * 2));
 tree.prettyPrint(tree.root);
