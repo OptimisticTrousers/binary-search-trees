@@ -99,7 +99,7 @@ class Tree {
       }
     }
 
-    if (temp.data === value) {
+    if (temp?.data === value) {
       return temp;
     }
     return null;
@@ -204,6 +204,25 @@ class Tree {
     }
 
     return leftCount > rightCount ? leftCount : rightCount;
+  };
+
+  depth = (node) => {
+    let temp = this.root;
+    let count = 0;
+
+    while (temp) {
+      if (temp.data < node.data) {
+        temp = temp.right;
+        count = count + 1;
+      } else if (temp.data > node.data) {
+        count = count + 1;
+        temp = temp.left;
+      } else {
+        break;
+      }
+    }
+
+    return count;
   };
 }
 
