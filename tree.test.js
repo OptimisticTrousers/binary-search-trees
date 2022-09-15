@@ -308,4 +308,47 @@ describe("Tree", () => {
       expect(tree.isBalanced()).toEqual(true);
     });
   });
+  describe("#rebalance", () => {
+    test("rebalancing an unbalanced tree", () => {
+      const tree = new Tree([16]);
+
+      tree.insert(10);
+      tree.insert(20);
+      tree.insert(30);
+      tree.insert(40);
+      tree.insert(50);
+      tree.insert(60);
+
+      tree.rebalance();
+
+      expect(tree.isBalanced()).toEqual(true);
+    });
+    test("balanced tree of height difference 1 remains balanced", () => {
+      const tree = new Tree([16]);
+
+      tree.insert(10);
+      tree.insert(20);
+      tree.insert(30);
+
+      tree.rebalance();
+
+      expect(tree.isBalanced()).toEqual(true);
+    });
+    test("balanced tree of height difference 0 remains balanced", () => {
+      const tree = new Tree([16]);
+
+      tree.insert(10);
+      tree.insert(20);
+
+      tree.rebalance();
+
+      expect(tree.isBalanced()).toEqual(true);
+    });
+    test("does not do anything when the tree is empty", () => {
+      const tree = new Tree();
+
+      tree.rebalance();
+      expect(tree.isBalanced()).toEqual(null);
+    });
+  });
 });
