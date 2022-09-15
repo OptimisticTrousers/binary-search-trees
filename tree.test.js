@@ -246,4 +246,23 @@ describe("Tree", () => {
       expect(tree.height(tree.root.left)).toEqual(1);
     });
   });
+  describe("#depth", () => {
+    test("depth for a leaf node", () => {
+      const tree = new Tree();
+      tree.insert(50);
+      tree.insert(30);
+      tree.insert(20);
+      tree.insert(40);
+      tree.insert(70);
+      tree.insert(60);
+      tree.insert(80);
+
+      expect(tree.depth(tree.root.left.right)).toEqual(2);
+    });
+    test("depth for a single node tree", () => {
+      const tree = new Tree([5]);
+
+      expect(tree.depth(tree.root)).toEqual(0);
+    });
+  });
 });
