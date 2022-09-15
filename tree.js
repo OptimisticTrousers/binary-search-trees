@@ -235,6 +235,12 @@ class Tree {
       Math.abs(leftHeight - rightHeight) === 1 || leftHeight - rightHeight === 0
     );
   };
+
+  rebalance = () => {
+    const inorderArray = this.inorder().map((node) => node.data);
+
+    this.root = this.buildTree(inorderArray, 0, inorderArray.length - 1);
+  };
 }
 
 // const tree = new Tree([30, 15, 20, 10, 40, 60]);
@@ -247,6 +253,8 @@ tree.insert(30);
 tree.insert(40);
 tree.insert(50);
 tree.insert(60);
+
+tree.rebalance();
 
 // console.log(tree.inorder((node) => node.data * 2));
 tree.prettyPrint(tree.root);
