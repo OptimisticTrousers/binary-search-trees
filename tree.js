@@ -132,8 +132,8 @@ class Tree {
     return answer.map((node) => node.data);
   };
 
-  levelOrderRec = (callback) => {
-    if (this.root === null) return [];
+  levelOrderRec = (callback, node) => {
+    if (node === null) return [];
 
     if (current.left !== null) {
       return this.levelOrderRec(callback);
@@ -242,21 +242,5 @@ class Tree {
     this.root = this.buildTree(inorderArray, 0, inorderArray.length - 1);
   };
 }
-
-// const tree = new Tree([30, 15, 20, 10, 40, 60]);
-// console.log(tree.postorder((node) => node.data * 2));
-const tree = new Tree([16]);
-
-tree.insert(10);
-tree.insert(20);
-tree.insert(30);
-tree.insert(40);
-tree.insert(50);
-tree.insert(60);
-
-tree.rebalance();
-
-// console.log(tree.inorder((node) => node.data * 2));
-tree.prettyPrint(tree.root);
 
 module.exports = Tree;
