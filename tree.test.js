@@ -245,8 +245,5 @@ describe("Tree", () => {
       tree.insert(80);
       expect(tree.height(tree.root.left)).toEqual(1);
     });
-    test("height for a tree that is height 10", () => {
-
-    })
   });
 });
