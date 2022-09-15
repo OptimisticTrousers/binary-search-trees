@@ -99,7 +99,7 @@ class Tree {
       }
     }
 
-    if (temp) {
+    if (temp.data === value) {
       return temp;
     }
     return null;
