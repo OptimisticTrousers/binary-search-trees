@@ -217,4 +217,36 @@ describe("Tree", () => {
       expect(tree.inorder((node) => node.data.toString())).toEqual(["48"]);
     });
   });
+  describe("#height", () => {
+    test("height for a single element tree", () => {
+      const tree = new Tree([48]);
+
+      expect(tree.height(tree.root)).toEqual(0);
+    });
+    test("height for tree with longest edges being 2", () => {
+      const tree = new Tree();
+      tree.insert(50);
+      tree.insert(30);
+      tree.insert(20);
+      tree.insert(40);
+      tree.insert(70);
+      tree.insert(60);
+      tree.insert(80);
+      expect(tree.height(tree.root)).toEqual(2);
+    });
+    test("height for a node that is not the root node", () => {
+      const tree = new Tree();
+      tree.insert(50);
+      tree.insert(30);
+      tree.insert(20);
+      tree.insert(40);
+      tree.insert(70);
+      tree.insert(60);
+      tree.insert(80);
+      expect(tree.height(tree.root.left)).toEqual(1);
+    });
+    test("height for a tree that is height 10", () => {
+
+    })
+  });
 });

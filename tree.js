@@ -193,12 +193,12 @@ class Tree {
     let leftCount = 0;
     let rightCount = 0;
 
-    while (leftTemp.left) {
+    while (leftTemp?.left) {
       leftTemp = leftTemp.left;
       leftCount++;
     }
 
-    while (rightTemp.right) {
+    while (rightTemp?.right) {
       rightTemp = rightTemp.right;
       rightCount++;
     }
